@@ -8,9 +8,11 @@ We can reduce carbon emissions by switching to electric vehicles (EVs) but it is
 
 ## Team organization
 
-Boudsalakham, Design, documentation and research
-Noura, Data preprocessing
-Selina, Data preprocessing 
+<ul>
+<li>Boudsalakham, Design, documentation and research</li>
+<li>Noura, Data preprocessing</li>
+<li>Selina, Data preprocessing</li>
+</ul>
 
 ## Documentation
 
