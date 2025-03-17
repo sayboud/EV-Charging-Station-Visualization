@@ -4,7 +4,7 @@
 
 Cars and vans accounted for 48 percent of global transport carbon dioxide emissions in 2022, according to an [analysis by Statista](https://www.statista.com/statistics/1185535/transport-carbon-dioxide-emissions-breakdown/) based on International Energy Agency data.
 
-We can reduce carbon emissions by switching to electric vehicles (EVs) but it is not a perfect solution. Thus, our project aims to create visualizations for improving an aspect of EVs. In our case, we choose to tackle EV charging infrastructure, particularly how we can manage the electric grid to handle demand from EV charging and how we can improve the placement of charging stations.
+We can reduce carbon emissions by switching to electric vehicles (EVs) but it is not a perfect solution. Thus, our project aims to create visualizations for improving an aspect of EVs. In our case, we choose to tackle EV charging infrastructure, particularly how we can better prepare the electric grid to handle demand from EV charging and how we can improve the placement of charging stations.
 
 ## Team organization
 
