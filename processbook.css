@@ -1,0 +1,80 @@
+/* Body and Layout */
+body {
+    font-family: 'Kumbh Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fafaf0; /* Soft Minty White */
+    color: #1D3557; /* Dark Navy */
+}
+
+/* Navigation bar styling */
+nav {
+    background-color: #000000; 
+    font-family: 'Kumbh Sans', sans-serif;
+    padding: 10px;
+    text-align: center;
+    height : 35px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 20px;
+}
+
+nav a {
+    color: #d4d4d4; /* Dark Navy */
+    text-decoration: none;
+    font-size: 1.1em;
+}
+
+nav a:hover {
+    color: #b9b3ae; /* Pastel Orange */
+}
+
+/* Sidebar */
+.sidebar {
+    font-family: 'Kumbh Sans', sans-serif;
+    position: fixed;
+    top: 40px; /* Adjusted to prevent overlap with navbar */
+    left: 0;
+    width: 150px;
+    height: calc(100vh - 40px); /* Prevent sidebar from overlapping navbar */
+    background-color: #080706; /* Pastel Orange */
+    padding: 20px;
+    color: white;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    z-index: 999; /* Ensure sidebar stays beneath navbar */
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 20px 0;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.sidebar ul li a:hover {
+    color: #b9b3ae;
+}
