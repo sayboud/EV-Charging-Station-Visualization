@@ -1,14 +1,10 @@
 const margin = { top: 70, right: 30, bottom: 40, left: 80 };
 const width = 1200 - margin.left - margin.right;
 const height = 500 - margin.top - margin.bottom;
-
-let df_peak_time = [];
-let get_keys;
+let df_peak_time = [], get_keys;
 
 d3.csv("charging_sessions_cleaned.csv").then(function(data) {
-
 df_peak_time = data;
-
 });
 
 document.getElementById("timeofday").addEventListener("click", function() {
@@ -41,31 +37,25 @@ function data_grouper(data) {
 function peak_time_grapher(data) {
     d3.select("#line-chart-container").html("");
 
-    const x = d3.scaleBand().domain(data.keys()).range([0, width]) 
-    const y = d3.scaleLinear().range([height, 0]).domain([0, d3.max(data.values())]);
+    const x = d3.scalePoint().range([0, width]).domain(data.keys()).padding(0.5); 
+   const y = d3.scaleLinear().domain([0, d3.max(data.values())])
+        .nice()
+        .range([height, 0]);
 
-    const svg = d3.select("#line-chart-container")
-        .append("svg")
+    const svg = d3.select("#line-chart-container").append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
-        .attr("transform",`translate(${margin.left},${margin.top})`);
+        .attr("transform", `translate(${margin.left},${margin.top})`);
 
-    const line = d3.line()
-        .x(d => x(d[0]))
-        .y(d => y(d[1])); 
+    const line = d3.line().x(d => x(d[0])).y(d => y(d[1]))
+        .curve(d3.curveMonotoneX); 
 
-    svg.append("path")
-        .datum(data)
-        .attr("fill", "none")
-        .attr("stroke", "steelblue")
-        .attr("stroke-width", 1)
-        .attr("d", line);
+    svg.append("path").datum(data).attr("fill", "none")
+    .attr("stroke", "steelblue").attr("stroke-width", 2)
+    .attr("d", line);
 
-    svg.append("g")
-        .attr("transform", `translate(0,${height})`)
-        .call(d3.axisBottom(x))
-
-    svg.append("g")
-        .call(d3.axisLeft(y));
+    svg.append("g").attr("transform", `translate(0,${height})`)
+    .call(d3.axisBottom(x)); 
+    svg.append("g").call(d3.axisLeft(y));
 }
