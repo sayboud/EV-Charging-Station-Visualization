@@ -65,8 +65,20 @@ nav a:hover {
     color: #b9b3ae; /* Pastel Orange */
 }
 
-#interactive-map {
-    width: 65%;
+#map {
+    display: flex;
     height: 100vh;
-    position: fixed
 }
+
+#interactive-map {
+    width: 60%;
+    height: 100vh;
+    position: relative;
+}
+
+#Viz-panel {
+    width: 40%;
+    height: 100vh;
+    padding: 2%;
+}
+
