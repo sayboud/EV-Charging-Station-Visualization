@@ -73,7 +73,7 @@ function peak_time_grapher(data) {
         svg.append("g").attr("transform", `translate(0,${height})`)
         .call(d3.axisBottom(x).tickFormat(d => days[d]));
 
-        }
+    }
 
     if (pressed_button === 'datasetwide') {
         svg.append("g").attr("transform", `translate(0,${height})`)
