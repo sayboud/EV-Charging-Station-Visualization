@@ -34,6 +34,8 @@ function data_grouper(data) {
         console.log(df_sorted)
         peak_time_grapher(df_sorted)
 
+        console.log('working')
+
 
     }
 }
@@ -41,7 +43,7 @@ function data_grouper(data) {
 function peak_time_grapher(data) {
     d3.select("#line-chart-container").html("");
 
-   const x = d3.scalePoint().range([0, width]).domain(data.keys()).padding(0.5); 
+   const x = d3.scalePoint().range([0, width]).domain(data.keys()); 
    const y = d3.scaleLinear().domain([0, d3.max(data.values())])
         .nice()
         .range([height, 0]);
@@ -64,9 +66,7 @@ function peak_time_grapher(data) {
         svg.append("g").attr("transform", `translate(0,${height})`)
     .call(d3.axisBottom(x).tickFormat(d => {return `${d}:00`}));
 
-        svg.append("line").attr("x1", 0).attr("x2", width)
-        .attr("y1", y(100000)).attr("y2", y(100000)).attr("stroke", "red")
-        .attr("stroke-width", 2)
+
     }
 
     if (pressed_button === 'dayofweek') {
@@ -78,6 +78,8 @@ function peak_time_grapher(data) {
     if (pressed_button === 'datasetwide') {
         svg.append("g").attr("transform", `translate(0,${height})`)
     .call(d3.axisBottom(x));
+
+
     }
 
     
