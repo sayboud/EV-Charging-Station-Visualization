@@ -1,9 +1,9 @@
 const map = L.map('interactive-map').setView([37.4419, -122.13], 13);
-const margin = { top: 70, right: 15, bottom: 40, left: 40 };
-const width = 400 - margin.left - margin.right;
-const height = 300 - margin.top - margin.bottom;
-const clock_margin = { top: 20, right: 10, bottom: 20, left: 10 };
-const clock_width = 560 - margin.left - margin.right;
+const margin = { top: 10, right: 5, bottom: 40, left: 40 };
+const width = 450 - margin.left - margin.right;
+const height = 270 - margin.top - margin.bottom;
+const clock_margin = { top: 10, right: 5, bottom: 10, left: 5 };
+const clock_width = 450 - margin.left - margin.right;
 const clock_height = clock_width;
 
 const innerRadius = 90;
@@ -103,7 +103,7 @@ function peak_time_grapher(data) {
     .attr("d", line);
  
     svg.append("g").call(d3.axisLeft(y));
-    svg.append("text").attr("class", "y label").attr("text-anchor", "left").attr("x", 5).text("Energy Consumption (kWh)");
+    svg.append("text").attr("class", "y label").attr("text-anchor", "left").attr("x", 40).attr("y",10).text("Energy Consumption (kWh)");
 
     const tooltip = d3.select("#stationtooltip");
 
@@ -260,7 +260,7 @@ function clock(data) {
     .attr("fill", "black");
 
     yTick.append('text').attr("text-anchor", "middle")
-    .attr("y", clock_height/2 + 7).text("Radial Chart as a clock");
+    .attr("y", clock_height/2 + 5).text("Radial Chart as a clock");
 
     yTick.append('text').text('Hour').attr("text-anchor", "middle");
 

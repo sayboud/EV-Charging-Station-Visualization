@@ -73,13 +73,14 @@ nav a:hover {
 #interactive-map {
     width: 55%;
     height: 100vh;
-    position: sticky;
+   
 }
 
 #Viz-panel {
     width: 35%;
     height: 100vh;
-    padding: 2%;
+    padding: 1%;
+    align-items: center;
 }
 
 
@@ -120,4 +121,3 @@ button:active {
     padding: 5px; 
     pointer-events: none;
 }
-
