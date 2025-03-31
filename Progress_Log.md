@@ -28,3 +28,15 @@ During this final week we completed the visualizations using D3.js, completed th
 
 ### **Weekend 28-31 Mar** :   
 Final touches on the project, prepared for the oral presentation and did the peer evaluation for group 9.
+
+
+# Sketches :  
+![First Sketch](map_sketch.jpg)  
+
+We did not create a bubble map but only placed markers for stations. 
+We scrapped the switch for the time of day graphs and display both simultaneously as they represent the same thing in two different ways, the line chart is interactive and has tooltips when you hover on the data points and the clock chart provides an even more intuitive display of peak hours in the day.  
+We also did not include charging info and the visualization of the mean energy consumption.  
+
+![First Sketch](clock_sketch.jpg)   
+
+Again, we did not maintain the mean setting feature, what has become of it is the three buttons to switch between line charts. We also added tooltips to all our line charts. 
