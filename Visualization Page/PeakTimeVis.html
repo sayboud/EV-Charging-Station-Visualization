@@ -18,21 +18,42 @@
     </nav>
 <div>
 
-    <div>
+    <div class="button-container">
         <button id="timeofday">Time Of Day</option>
         <button id="dayofweek">Day Of Week</option>
         <button id="datasetwide">Dataset Wide</option>
     </div>
 
 <div id="line-chart-container"></div>
+
+<div id="timeofday-text" class="interpretation-box">
+    <h4> Interpretation </h4>
+    <p> By observing this graph, we can deduce that the night (1AM–4AM) charging sessions are uncommon. 
+        Charging stations start to get busy at sunrise and reach their peak around 1 p.m. 
+        They are also quite busy during the afternoon and evening, although a little less than during the day.</p>    
+</div>
+<br>
+
+<div id="dayofweek-text"  class="interpretation-box">
+    <h4> Interpretation </h4>
+    <p> We note that consumption remains constant throughout the week. 
+        However, weekends remain a little less hectic in terms of consumption than weekdays.
+    </p>
+</div>
+
+<div id="datasetwide-text"  class="interpretation-box">
+    <h4> Interpretation </h4>
+    <p> Between 2011 and 2014, the energy consumed was relatively low. 
+        It took on an exponential rate from 2014, reflecting the rise of the electric car from that date. 
+        It experienced some variations but remained at the same high level until 2020, when it fell drastically. 
+        One could hypothesize the global Covid-19 crisis.
+    </p>
+</div>
 <div id="clock-chart-container"></div>
 
 </div>
 
-
 <script src = "PeakTimeVis.js"></script>
-
-
 
 </body>
 </html> 

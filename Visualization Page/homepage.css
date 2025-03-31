@@ -8,7 +8,7 @@
 /* Body styling */
 body {
     font-family: Arial, sans-serif;
-    background-color: #fafaf0;;
+    background-color: #ffffff;;
     color: #333;
 }
 
@@ -29,7 +29,7 @@ header p {
 }
 
 nav {
-    background-color: #000000; 
+    background-color: #202A44; 
     font-family: 'Kumbh Sans', sans-serif;
     padding: 10px;
     text-align: center;
@@ -73,7 +73,7 @@ nav a:hover {
 #interactive-map {
     width: 60%;
     height: 100vh;
-    position: relative;
+    position: sticky;
 }
 
 #Viz-panel {
@@ -82,3 +82,30 @@ nav a:hover {
     padding: 2%;
 }
 
+/* Button styling */
+.map-button-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 20px 0;
+}
+
+button {
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight : bold;
+    border-color: #202A44;
+    background-color: #ffffff;
+    color: #202A44;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover and active states */
+button:hover {
+    background-color: #b9b3ae;
+}
+
+button:active {
+    background-color: #003f7f;
+}

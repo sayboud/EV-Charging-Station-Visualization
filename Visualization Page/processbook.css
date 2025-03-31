@@ -3,13 +3,13 @@ body {
     font-family: 'Kumbh Sans', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #fafaf0; /* Soft Minty White */
+    background-color: #ffffff; /* Soft Minty White */
     color: #1D3557; /* Dark Navy */
 }
 
 /* Navigation bar styling */
 nav {
-    background-color: #080706; 
+    background-color:#202A44;
     padding: 10px;
     height: 35px;
     display: flex;
@@ -54,7 +54,7 @@ nav a:hover {
     left: 0;
     width: 150px;
     height: calc(100vh - 40px); /* Prevent sidebar from overlapping navbar */
-    background-color: #080706; 
+    background-color: #202A44; 
     padding: 20px;
     color: #d4d4d4;    
 }
@@ -96,7 +96,7 @@ section {
 h2 {
     font-size: 2em; /* Larger headings for better hierarchy */
     font-weight: 700;
-    color: #1e3247; /* Darker color for headings */
+    color: #202A44; /* Darker color for headings */
     margin-bottom: 20px; /* Spacing below headings */
 }
 

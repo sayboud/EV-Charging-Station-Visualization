@@ -36,6 +36,39 @@ document.getElementById('datasetwide').addEventListener("click", function() {
     data_grouper(df_peak_time);
 });
 
+// Time of day interpretation
+document.getElementById("timeofday").addEventListener("click", function() {
+    document.getElementById("timeofday-text").style.display = "block";
+});
+document.getElementById("dayofweek").addEventListener("click", function() {
+    document.getElementById("timeofday-text").style.display = "none";
+});
+document.getElementById("datasetwide").addEventListener("click", function() {
+    document.getElementById("timeofday-text").style.display = "none";
+});
+
+//day of week interpretation
+document.getElementById("dayofweek").addEventListener("click", function() {
+    document.getElementById("dayofweek-text").style.display = "block";
+});
+document.getElementById("timeofday").addEventListener("click", function() {
+    document.getElementById("dayofweek-text").style.display = "none";
+});
+document.getElementById("datasetwide").addEventListener("click", function() {
+    document.getElementById("dayofweek-text").style.display = "none";
+});
+
+//dataset wide interpretation
+document.getElementById("datasetwide").addEventListener("click", function() {
+    document.getElementById("datasetwide-text").style.display = "block";
+});
+document.getElementById("timeofday").addEventListener("click", function() {
+    document.getElementById("datasetwide-text").style.display = "none";
+});
+document.getElementById("dayofweek").addEventListener("click", function() {
+    document.getElementById("datasetwide-text").style.display = "none";
+});
+
 function data_grouper(data) {
     if (get_keys) {
     const df_grouped = d3.rollup(data,
