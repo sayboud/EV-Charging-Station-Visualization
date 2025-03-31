@@ -1,8 +1,8 @@
-const margin = { top: 70, right: 30, bottom: 40, left: 80 };
+const margin = { top: 5, right: 30, bottom: 20, left: 80 };
 const width = 1200 - margin.left - margin.right;
 const height = 500 - margin.top - margin.bottom;
 
-const clock_margin = { top: 20, right: 10, bottom: 20, left: 10 };
+const clock_margin = { top: 50, right: 10, bottom: 20, left: 10 };
 const clock_width = 800 - margin.left - margin.right;
 const clock_height = clock_width;
 
@@ -108,7 +108,7 @@ function peak_time_grapher(data) {
     .attr("d", line);
  
     svg.append("g").call(d3.axisLeft(y));
-    svg.append("text").attr("class", "y label").attr("text-anchor", "left").attr("x", 5).text("Energy Consumption (kWh)");
+    svg.append("text").attr("class", "y label").attr("text-anchor", "left").attr("x", 5).attr("y",10).text("Energy Consumption (kWh)");
 
     const tooltip = d3.select("#tooltip");
 
