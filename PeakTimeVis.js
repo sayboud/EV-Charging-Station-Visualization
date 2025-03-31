@@ -100,7 +100,7 @@ function peak_time_grapher(data) {
     .attr("height", height + margin.top + margin.bottom)
     .append("g").attr("transform", `translate(${margin.left},${margin.top})`);
 
-    const line = d3.line().x(d => x(d[0])).y(d => y(d[1]))
+    const line = d3.line().x(function(d) {return x(d[0])}).y(function(d) {return y(d[1])})
     .curve(d3.curveMonotoneX); 
 
     svg.append("path").datum(data).attr("fill", "none")
@@ -114,7 +114,7 @@ function peak_time_grapher(data) {
 
     if (pressed_button === 'timeofday') {
         svg.append("g").attr("transform", `translate(0,${height})`)
-    .call(d3.axisBottom(x).tickFormat(d => {return `${d}:00`}));
+    .call(d3.axisBottom(x).tickFormat(function(d) {return `${d}:00`}));
 
     svg.append("text").attr("class", "x label").attr("text-anchor", "end")
     .attr("x", width).attr("y", height - 5).text("Hour");
@@ -123,7 +123,7 @@ function peak_time_grapher(data) {
 
     svg.selectAll(".dot").data(Array.from(data.entries()))
     .enter().append("circle").attr("class", "dot")
-    .attr("cx", d => x(d[0])).attr("cy", d => y(d[1]))
+    .attr("cx", function(d) {return x(d[0])}).attr("cy", function(d){return y(d[1])})
     .attr("r", 5).attr("fill", "blue")
     .on("mouseover", function(event, d) {
             tooltip.style("opacity", 1)
@@ -151,7 +151,7 @@ function peak_time_grapher(data) {
 
     if (pressed_button === 'dayofweek') {
         svg.append("g").attr("transform", `translate(0,${height})`)
-        .call(d3.axisBottom(x).tickFormat(d => days[d]));
+        .call(d3.axisBottom(x).tickFormat(function(d) {return days[d]}));
 
     svg.append("text").attr("class", "x label")
      .attr("x", width).attr("y", height - 5).text("Day");
@@ -195,7 +195,7 @@ function peak_time_grapher(data) {
 
     svg.selectAll(".dot").data(Array.from(data.entries()))
     .enter().append("circle").attr("class", "dot")
-    .attr("cx", d => x(d[0])).attr("cy", d => y(d[1]))
+    .attr("cx", function(d) {return x(d[0])}).attr("cy", function(d) {return y(d[1])})
     .attr("r", 5).attr("fill", "blue")
     .on("mouseover", function(event, d) {
             tooltip.style("opacity", 1)
@@ -225,7 +225,7 @@ function clock(data) {
     .append("g")
     .attr("transform", "translate(" + (clock_width / 2 + clock_margin.left) + "," + (clock_height / 2 + clock_margin.top) + ")");
 
-    const dataset = Array.from(data, ([key, value]) => ({ key: key, value: value }));
+    const dataset = Array.from(data, function([key, value]) {return { key: key, value: value }});
     
     const fullCircle = 2 * Math.PI * 23 / 24;
     const x = d3.scaleLinear().domain([0, 23]).range([0, fullCircle]);
@@ -252,7 +252,7 @@ function clock(data) {
         .attr("fill", "none")
         .attr("stroke", "#D8D8D8")
         .attr("opacity", 0.5)
-        .attr("r", d => y(d));
+        .attr("r", function(d) {return y(d)});
 
         yTick.append("text")
         .attr("y", d => -y(d)) 
@@ -280,7 +280,7 @@ function clock(data) {
             
     
         xAxis.append("line").attr("x2", -5).attr("stroke", "black");
-        xAxis.append("text").attr("transform", d => ((x(d) < Math.PI / 2) || (x(d) > (Math.PI * 3 / 2))) ? "rotate(90)translate(0,22)" : "rotate(-90)translate(0, -15)")
+        xAxis.append("text").attr("transform", function(d) {return ((x(d) < Math.PI / 2) || (x(d) > (Math.PI * 3 / 2)))} ? "rotate(90)translate(0,22)" : "rotate(-90)translate(0, -15)")
         .text(d => d).style("font-size", 10).attr("color", "black")
         
     }
