@@ -71,6 +71,7 @@ nav a:hover {
 }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 /* Button styling */
 .button-container {
     display: flex;
@@ -113,6 +114,8 @@ button:active {
     color: #333;
 }
 =======
+=======
+>>>>>>> Stashed changes
 #tooltip {
     position: absolute; 
     opacity: 0; 
@@ -122,4 +125,7 @@ button:active {
     pointer-events: none;
 }
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
