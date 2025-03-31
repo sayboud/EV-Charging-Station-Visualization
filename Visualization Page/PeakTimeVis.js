@@ -110,6 +110,8 @@ function peak_time_grapher(data) {
     svg.append("g").call(d3.axisLeft(y));
     svg.append("text").attr("class", "y label").attr("text-anchor", "left").attr("x", 5).text("Energy Consumption (kWh)");
 
+    const tooltip = d3.select("#tooltip");
+
     if (pressed_button === 'timeofday') {
         svg.append("g").attr("transform", `translate(0,${height})`)
     .call(d3.axisBottom(x).tickFormat(d => {return `${d}:00`}));
@@ -118,6 +120,28 @@ function peak_time_grapher(data) {
     .attr("x", width).attr("y", height - 5).text("Hour");
     svg.append("text").attr("class", "x label").attr("text-anchor", "middle")
     .attr("x", width/2).attr("y", height + 35).text("Energy Consumption By Time Of Day");
+
+    svg.selectAll(".dot").data(Array.from(data.entries()))
+    .enter().append("circle").attr("class", "dot")
+    .attr("cx", d => x(d[0])).attr("cy", d => y(d[1]))
+    .attr("r", 5).attr("fill", "blue")
+    .on("mouseover", function(event, d) {
+            tooltip.style("opacity", 1)
+            .html(`Hour: ${d[0]}:00 <br> Energy: ${d[1].toFixed(2)} kWh`)
+            .style("left", (event.pageX + 10) + "px")
+            .style("top", (event.pageY - 10) + "px");
+            d3.select(this).attr("r", 7).attr("fill", "red"); 
+        })
+        .on("mousemove", function(event) {
+            tooltip.style("left", (event.pageX + 10) + "px")
+                   .style("top", (event.pageY - 10) + "px");
+        })
+        .on("mouseout", function() {
+            tooltip.style("opacity", 0);
+            d3.select(this).attr("r", 5).attr("fill", "blue"); 
+        });
+
+    
 
 
     clock(data);
@@ -134,6 +158,26 @@ function peak_time_grapher(data) {
     svg.append("text").attr("class", "x label").attr("text-anchor", "middle")
      .attr("x", width/2).attr("y", height + 35).text("Energy Consumption By Day Of Week");
 
+     svg.selectAll(".dot").data(Array.from(data.entries()))
+    .enter().append("circle").attr("class", "dot")
+    .attr("cx", d => x(d[0])).attr("cy", d => y(d[1]))
+    .attr("r", 5).attr("fill", "blue")
+    .on("mouseover", function(event, d) {
+            tooltip.style("opacity", 1)
+                .html(`Day: ${days[d[0]]} <br> Energy: ${d[1].toFixed(2)} kWh`)
+                .style("left", (event.pageX + 10) + "px")
+                .style("top", (event.pageY - 10) + "px");
+            d3.select(this).attr("r", 7).attr("fill", "red"); 
+        })
+        .on("mousemove", function(event) {
+            tooltip.style("left", (event.pageX + 10) + "px")
+            .style("top", (event.pageY - 10) + "px");
+        })
+        .on("mouseout", function() {
+            tooltip.style("opacity", 0);
+            d3.select(this).attr("r", 5).attr("fill", "blue"); 
+        });
+
     
 
 
@@ -147,7 +191,27 @@ function peak_time_grapher(data) {
     svg.append("text").attr("text-anchor", "end")
     .attr("x", width).attr("y", height - 5).text("Year");
     svg.append("text").attr("class", "x label").attr("text-anchor", "middle")
-    .attr("x", width/2).attr("y", height + 35).text("Radial Chart as a clock");
+    .attr("x", width/2).attr("y", height + 35).text("Energy Consumption Over Entire Dataset");
+
+    svg.selectAll(".dot").data(Array.from(data.entries()))
+    .enter().append("circle").attr("class", "dot")
+    .attr("cx", d => x(d[0])).attr("cy", d => y(d[1]))
+    .attr("r", 5).attr("fill", "blue")
+    .on("mouseover", function(event, d) {
+            tooltip.style("opacity", 1)
+                .html(`Year: ${d[0]} <br> Energy: ${d[1].toFixed(2)} kWh`)
+                .style("left", (event.pageX + 10) + "px")
+                .style("top", (event.pageY - 10) + "px");
+            d3.select(this).attr("r", 7).attr("fill", "red"); 
+        })
+        .on("mousemove", function(event) {
+            tooltip.style("left", (event.pageX + 10) + "px")
+                   .style("top", (event.pageY - 10) + "px");
+        })
+        .on("mouseout", function() {
+            tooltip.style("opacity", 0);
+            d3.select(this).attr("r", 5).attr("fill", "blue"); 
+        });
     }
 
     

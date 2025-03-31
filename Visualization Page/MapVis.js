@@ -3,7 +3,7 @@ const margin = { top: 70, right: 15, bottom: 40, left: 40 };
 const width = 400 - margin.left - margin.right;
 const height = 300 - margin.top - margin.bottom;
 const clock_margin = { top: 20, right: 10, bottom: 20, left: 10 };
-const clock_width = 500 - margin.left - margin.right;
+const clock_width = 560 - margin.left - margin.right;
 const clock_height = clock_width;
 
 const innerRadius = 90;
@@ -71,71 +71,14 @@ function data_grouper(data) {
 
         const df_sorted = new Map(Array.from(df_grouped.entries()).filter(([key]) => !isNaN(key)).sort(([key1], [key2]) => key1 - key2) );
         console.log(df_sorted)
+        
         peak_time_grapher(df_sorted)
 
 
     }
 }
 
-function peak_time_grapher(data) {
 
-
-   const x = d3.scalePoint().range([0, width]).domain(data.keys()); 
-   const y = d3.scaleLinear().domain([0, d3.max(data.values())])
-        .nice()
-        .range([height, 0]);
-
-    const svg = d3.select("#station-line-chart-container").append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
-        .append("g").attr("transform", `translate(${margin.left},${margin.top})`);
-
-    const line = d3.line().x(d => x(d[0])).y(d => y(d[1]))
-        .curve(d3.curveMonotoneX); 
-
-    svg.append("path").datum(data).attr("fill", "none")
-    .attr("stroke", "steelblue").attr("stroke-width", 2)
-    .attr("d", line);
- 
-    svg.append("g").call(d3.axisLeft(y));
-    svg.append("text").attr("class", "y label").attr("text-anchor", "left").attr("x", 5).text("Energy Consumption (kWh)");
-
-    if (pressed_button === 'timeofday') {
-        svg.append("g").attr("transform", `translate(0,${height})`)
-    .call(d3.axisBottom(x));
-    svg.append("text").attr("class", "x label").attr("text-anchor", "end")
-    .attr("x", width).attr("y", height - 5).text("Hour");
-    svg.append("text").attr("class", "x label").attr("text-anchor", "middle")
-    .attr("x", width/2).attr("y", height + 35).text("Energy Consumption By Time Of Day");
-
-
-    }
-
-    if (pressed_button === 'dayofweek') {
-        svg.append("g").attr("transform", `translate(0,${height})`)
-        .call(d3.axisBottom(x).tickFormat(d => days[d]));
-    svg.append("text").attr("class", "x label").attr("text-anchor", "end")
-    .attr("x", width).attr("y", height - 5).text("Day");
-    svg.append("text").attr("class", "x label").attr("text-anchor", "middle")
-    .attr("x", width/2).attr("y", height + 35).text("Energy Consumption By Day Of Week");
-
-
-    }
-
-    if (pressed_button === 'datasetwide') {
-        svg.append("g").attr("transform", `translate(0,${height})`)
-    .call(d3.axisBottom(x));
-    svg.append("text").attr("class", "x label").attr("text-anchor", "end")
-    .attr("x", width).attr("y", height - 5).text("Year");
-    svg.append("text").attr("class", "x label").attr("text-anchor", "middle")
-    .attr("x", width/2).attr("y", height + 35).text("Energy Consumption Over Entire Dataset");
-
-
-    }
-    console.log('graphing done')
-
-    
-}
 
 
 function peak_time_grapher(data) {
@@ -162,14 +105,37 @@ function peak_time_grapher(data) {
     svg.append("g").call(d3.axisLeft(y));
     svg.append("text").attr("class", "y label").attr("text-anchor", "left").attr("x", 5).text("Energy Consumption (kWh)");
 
+    const tooltip = d3.select("#stationtooltip");
+
     if (pressed_button === 'timeofday') {
         svg.append("g").attr("transform", `translate(0,${height})`)
-    .call(d3.axisBottom(x).tickFormat(d => {return `${d}:00`}));
+    .call(d3.axisBottom(x));
 
     svg.append("text").attr("class", "x label").attr("text-anchor", "end")
     .attr("x", width).attr("y", height - 5).text("Hour");
     svg.append("text").attr("class", "x label").attr("text-anchor", "middle")
     .attr("x", width/2).attr("y", height + 35).text("Energy Consumption By Time Of Day");
+
+    svg.selectAll(".dot").data(Array.from(data.entries()))
+    .enter().append("circle").attr("class", "dot")
+    .attr("cx", d => x(d[0])).attr("cy", d => y(d[1]))
+    .attr("r", 5).attr("fill", "blue")
+    .on("mouseover", function(event, d) {
+            tooltip.style("opacity", 1)
+            .html(`Hour: ${d[0]}:00 <br> Energy: ${d[1].toFixed(2)} kWh`)
+            .style("left", (event.pageX + 10) + "px")
+            .style("top", (event.pageY - 10) + "px");
+            d3.select(this).attr("r", 7).attr("fill", "red"); 
+        })
+        .on("mousemove", function(event) {
+            tooltip.style("left", (event.pageX + 10) + "px")
+                   .style("top", (event.pageY - 10) + "px");
+        })
+        .on("mouseout", function() {
+            tooltip.style("opacity", 0);
+            d3.select(this).attr("r", 5).attr("fill", "blue"); 
+        });
+    
 
 
     clock(data);
@@ -186,7 +152,25 @@ function peak_time_grapher(data) {
     svg.append("text").attr("class", "x label").attr("text-anchor", "middle")
      .attr("x", width/2).attr("y", height + 35).text("Energy Consumption By Day Of Week");
 
-    
+    svg.selectAll(".dot").data(Array.from(data.entries()))
+     .enter().append("circle").attr("class", "dot")
+     .attr("cx", d => x(d[0])).attr("cy", d => y(d[1]))
+     .attr("r", 5).attr("fill", "blue")
+     .on("mouseover", function(event, d) {
+             tooltip.style("opacity", 1)
+                 .html(`Day: ${days[d[0]]} <br> Energy: ${d[1].toFixed(2)} kWh`)
+                 .style("left", (event.pageX + 10) + "px")
+                 .style("top", (event.pageY - 10) + "px");
+             d3.select(this).attr("r", 7).attr("fill", "red"); 
+         })
+         .on("mousemove", function(event) {
+             tooltip.style("left", (event.pageX + 10) + "px")
+             .style("top", (event.pageY - 10) + "px");
+         })
+         .on("mouseout", function() {
+             tooltip.style("opacity", 0);
+             d3.select(this).attr("r", 5).attr("fill", "blue"); 
+         });
 
 
 
@@ -200,6 +184,31 @@ function peak_time_grapher(data) {
     .attr("x", width).attr("y", height - 5).text("Year");
     svg.append("text").attr("class", "x label").attr("text-anchor", "middle")
     .attr("x", width/2).attr("y", height + 35).text("Energy Consumption Over Entire Dataset");
+
+    svg.append("text").attr("text-anchor", "end")
+    .attr("x", width).attr("y", height - 5).text("Year");
+    svg.append("text").attr("class", "x label").attr("text-anchor", "middle")
+    .attr("x", width/2).attr("y", height + 35).text("Energy Consumption Over Entire Dataset");
+
+    svg.selectAll(".dot").data(Array.from(data.entries()))
+    .enter().append("circle").attr("class", "dot")
+    .attr("cx", d => x(d[0])).attr("cy", d => y(d[1]))
+    .attr("r", 5).attr("fill", "blue")
+    .on("mouseover", function(event, d) {
+            tooltip.style("opacity", 1)
+                .html(`Year: ${d[0]} <br> Energy: ${d[1].toFixed(2)} kWh`)
+                .style("left", (event.pageX + 10) + "px")
+                .style("top", (event.pageY - 10) + "px");
+            d3.select(this).attr("r", 7).attr("fill", "red"); 
+        })
+        .on("mousemove", function(event) {
+            tooltip.style("left", (event.pageX + 10) + "px")
+                   .style("top", (event.pageY - 10) + "px");
+        })
+        .on("mouseout", function() {
+            tooltip.style("opacity", 0);
+            d3.select(this).attr("r", 5).attr("fill", "blue"); 
+        });
     }
 
     
@@ -256,7 +265,7 @@ function clock(data) {
     yTick.append('text').text('Hour').attr("text-anchor", "middle");
 
     yTick.append('text').text('Energy Consumption (kWh)').attr("text-anchor", "middle")
-    .attr("x", clock_width /3 ).attr("y", -(clock_height/3));
+    .attr("x", clock_width /4 ).attr("y", -(clock_height/3));
     
     const xAxis = clock_svg.append("g")
     .selectAll(".radial")
