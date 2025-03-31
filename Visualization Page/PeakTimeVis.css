@@ -64,3 +64,8 @@ nav a:hover {
     color: #b9b3ae; /* Pastel Orange */
 }
 
+#clock-chart-container {
+    text-align: center;
+
+}
+

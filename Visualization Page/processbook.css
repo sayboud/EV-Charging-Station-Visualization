@@ -1,4 +1,4 @@
-/* Body and Layout */
+/* Body styling */
 body {
     font-family: 'Kumbh Sans', sans-serif;
     margin: 0;
@@ -9,12 +9,9 @@ body {
 
 /* Navigation bar styling */
 nav {
-    background-color: #000000; 
-    font-family: 'Kumbh Sans', sans-serif;
+    background-color: #080706; 
     padding: 10px;
-    text-align: center;
-    height : 35px;
-    text-align: center;
+    height: 35px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,21 +25,25 @@ nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    display: flex; /* Add this line to align items in a row */
+    justify-content: center; /* Center items horizontally */
+    align-items: center; /* Aligns items vertically */
+    gap: 30px; /* Add spacing between items */
 }
 
+
 nav ul li {
-    display: inline;
-    margin: 0 20px;
+    margin: 0 25px; /* Increase spacing between items */
 }
 
 nav a {
-    color: #d4d4d4; /* Dark Navy */
+    color: #d4d4d4; 
     text-decoration: none;
     font-size: 1.1em;
 }
 
 nav a:hover {
-    color: #b9b3ae; /* Pastel Orange */
+    color: #b9b3ae; 
 }
 
 /* Sidebar */
@@ -53,11 +54,9 @@ nav a:hover {
     left: 0;
     width: 150px;
     height: calc(100vh - 40px); /* Prevent sidebar from overlapping navbar */
-    background-color: #080706; /* Pastel Orange */
+    background-color: #080706; 
     padding: 20px;
-    color: white;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
-    z-index: 999; /* Ensure sidebar stays beneath navbar */
+    color: #d4d4d4;    
 }
 
 .sidebar ul {
@@ -78,3 +77,42 @@ nav a:hover {
 .sidebar ul li a:hover {
     color: #b9b3ae;
 }
+
+/* Main Content */
+.main-content {
+    margin-left: 230px; /* Adjust for sidebar width */
+    margin-top: 40px; /* Space for fixed navigation bar */
+    padding: 20px;
+    line-height: 1.6; /* Increased line height for readability */
+}
+
+/* Section Styling */
+section {
+    padding-top: 50px; /* Ensure content doesn't get hidden under navbar */
+    margin-top: -50px; /* Prevent overlap with navbar */
+    } 
+
+/* Heading Style */
+h2 {
+    font-size: 2em; /* Larger headings for better hierarchy */
+    font-weight: 700;
+    color: #1e3247; /* Darker color for headings */
+    margin-bottom: 20px; /* Spacing below headings */
+}
+
+/* Paragraph Styling */
+p {
+    font-size: 1.1em;
+    color: #34495e; /* Slightly lighter dark color for paragraphs */
+    margin-bottom: 20px;
+}
+
+/* Link Styling within sections */
+section a {
+    color: rgb(77, 112, 194);
+    text-decoration: none;
+} 
+
+section a:hover {
+    text-decoration: underline;
+} 
