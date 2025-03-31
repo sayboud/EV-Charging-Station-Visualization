@@ -17,6 +17,7 @@ We can reduce carbon emissions by switching to electric vehicles (EVs) but it is
 ## Documentation
 
 [Progress Log](https://github.com/sayboud/EV-Charging-Station-Visualization/blob/main/Progress_Log.md#progress-log)
+[Scoping Document](https://github.com/sayboud/EV-Charging-Station-Visualization/blob/main/Scoping_Document.md)
 
 ## Credits
 
