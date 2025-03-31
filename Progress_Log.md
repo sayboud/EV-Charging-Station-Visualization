@@ -8,7 +8,7 @@ We have started the exploratory data analysis (EDA). We started off by cleaning 
 
 ### **Week 3, 5 Mar** :  
 We have finished the first version of the EDA. We have created 2 new variables which are “Day of week” and “Time of day” in order to help us analyze peak times, and create out of it most of our visualizations.   
-![First Screenshot](Creating_Variable.png)  
+![First Screenshot](Creating_variables.png)  
 In order to create these 2 variables, we first had to process the date and time variables such as harmonizing into Pacific Daylight Time etc…
 ![Second Screenshot](Harmonizing.png)    
 
@@ -19,8 +19,8 @@ During this week, we also started sketching the visualizations.
 ### **Week 5, 19 Mar** :  
 We have finished the sketches and started thinking about their implementation.
 Additionally, we learned D3.js using the tutorials that are on the GitLab.
-In our EDA, when looking to identify the time of day where energy consumption was the highest, we grouped the Start Date of the charging session by hour and then summed up the energy consumption. We now realize that it is more accurate to group the End Date because it is the actual moment where the energy was consumed. Indeed, this was not an arbitrary decision as the change produced a different curve. 
-
+In our EDA, when looking to identify the time of day where energy consumption was the highest, we grouped the Start Date of the charging session by hour and then summed up the energy consumption. We now realize that it is more accurate to group the End Date because it is the actual moment where the energy was consumed. Indeed, this was not an arbitrary decision as the change produced a different curve.   
+![Third Screenshot](end_date.jpg)   
 The decision uncovered another mishap in the EDA. When converting the dates, originally in strings, into datetime objects with pd.to_datetime, we used the argument errors=’coerce’ which produced null values in the End Date column. So we removed rows containing them to proceed.
 
 ### **Week 6, 27 Mar** :  
