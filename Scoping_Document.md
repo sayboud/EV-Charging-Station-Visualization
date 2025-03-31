@@ -29,9 +29,11 @@ At some point, we reworked the EDA with better methods. Where we used to elimina
 
 ## **Team Organization** : 
 
-Boudsa, Design, research and documentation
-Selina, Development
-Noura, Data preprocessing
-Though we have assigned roles, we prefer to work together in real life at every step of the project so everyone has a part in each aspect. 
-This March, we had to organize teamwork around fasting hours. As such, the real life meetings are set in the mornings, otherwise Boudsa works on the projects in the afternoon in order to assign tasks to the others after sundown.
+<ul>
+<li>Boudsa, Design, research and documentation</li>
+<li>Selina, Development</li>
+<li>Noura, Data preprocessing</li>
+<li>Though we have assigned roles, we prefer to work together in real life at every step of the project so everyone has a part in each aspect. 
+This March, we had to organize teamwork around fasting hours. As such, the real life meetings are set in the mornings, otherwise Boudsa works on the projects in the afternoon in order to assign tasks to the others after sundown.</li>
+</ul>
 
