@@ -47,7 +47,7 @@ function data_grouper(data) {
         console.log(df_sorted)
         peak_time_grapher(df_sorted)
 
-        console.log('working')
+        console.log('working') 
 
 
     }

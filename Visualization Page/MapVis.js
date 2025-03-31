@@ -3,7 +3,7 @@ const margin = { top: 70, right: 15, bottom: 40, left: 40 };
 const width = 400 - margin.left - margin.right;
 const height = 300 - margin.top - margin.bottom;
 const clock_margin = { top: 20, right: 10, bottom: 20, left: 10 };
-const clock_width = 450 - margin.left - margin.right;
+const clock_width = 500 - margin.left - margin.right;
 const clock_height = clock_width;
 
 const innerRadius = 90;
