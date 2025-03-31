@@ -58,8 +58,15 @@
                 <a href="http://teamdatahub.github.io" target="_blank">Team Data Hub</a>. It has mainly inspired the structure and functionality of our website. 
                 On the other hand, this website 
                 <a href="https://www.storytellingwithdata.com/blog/2019/7/15/recapping-radials" target="_blank">Storytelling with Data</a> 
-                inspired one of our visualizations, the radial clock chart, which we used to showcase the peak times of day for energy consumption, showing both the mean and sum of energy usage for each hour.
-            </p>
+                On one hand, our project was highly inspired by the following website.
+                http://teamdatahub.github.io/
+                It has mainly inspired the structure and functionality of our website as we based ourselves off the ‘overview’ and when ‘pages’ for our visualization page. Their work and used libraries are well documented in the process book and guided our writing of our scoping document. Though we deal with the topic of transportation, we do not work with bikes, their paths and their users but rather stations and their energy consumption. 
+                On the other hand, this website https://www.storytellingwithdata.com/blog/2019/7/15/recapping-radials inspired one of our visualizations, the radial clock chart, which we used to showcase the peak time of day for energy consumption. And as for its code, we based it off of the following StackOverflow page: https://stackoverflow.com/questions/58545545/d3-linear-radial-clock
+                Data Sources : 
+                Our project uses the EV Charging Station Usage Dataset from Palo Alto Open Data, an initiative undertaken by the city of Palo Alto, California, aimed at promoting transparency, accountability, and innovation through the provision of accessible and comprehensive datasets to the public. 
+                The dataset is unstructured with 259415 observations, it has what we need in terms of recorded energy consumption, time variables and station coordinates. There are even variables on GHG saved and Gasoline saved that can be used to highlight the impact of EVs, so suffice to say, for our purposes it has all we need. The minor caveat is that date variables are in different time zones and are stored as strings, likewise for time variables. In our exploratory data analysis (EDA), we processed them using the datetime library which allows us to convert strings into a formatted datetime.
+                At some point, we reworked the EDA with better methods. Where we used to eliminate rows with missing values, we now impute to maintain the size of our dataset. 
+                            </p>
         </section>
 
         <!-- Design Section -->
