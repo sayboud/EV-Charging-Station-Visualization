@@ -277,7 +277,7 @@ function clock(data) {
             
     
     xAxis.append("line").attr("x2", -5).attr("stroke", "black");
-    xAxis.append("text").attr("transform", d => ((x(d) < Math.PI / 2) || (x(d) > (Math.PI * 3 / 2))) ? "rotate(90)translate(0,22)" : "rotate(-90)translate(0, -15)")
+    xAxis.append("text").attr("transform", function(d) {return ((x(d) < Math.PI / 2) || (x(d) > (Math.PI * 3 / 2)))} ? "rotate(90)translate(0,22)" : "rotate(-90)translate(0, -15)")
     .text(d => d).style("font-size", 10).attr("color", "black")
         
     }
