@@ -147,7 +147,7 @@ function peak_time_grapher(data) {
         svg.append("g").attr("transform", `translate(0,${height})`)
         .call(d3.axisBottom(x).tickFormat(d => days[d]));
 
-    svg.append("text").attr("class", "x label")
+    svg.append("text").attr("class", "x label").attr("text-anchor", "end")
      .attr("x", width).attr("y", height - 5).text("Day");
     svg.append("text").attr("class", "x label").attr("text-anchor", "middle")
      .attr("x", width/2).attr("y", height + 35).text("Energy Consumption By Day Of Week");
